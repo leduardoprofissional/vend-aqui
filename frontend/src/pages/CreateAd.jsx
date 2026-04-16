@@ -7,18 +7,24 @@ export default function CreateAd() {
   const [image, setImage] = useState(null);
 
   const handleSubmit = async () => {
-    let imageUrl = "";
+    try {
+      let imageUrl = "";
 
-    if (image) {
-      const formData = new FormData();
-      formData.append("image", image);
-      const res = await api.post("/upload", formData);
-      imageUrl = res.data.image;
+      if (image) {
+        const formData = new FormData();
+        formData.append("image", image);
+
+        const res = await api.post("/upload", formData);
+        imageUrl = res.data.image;
+      }
+
+      await api.post("/ads", { title, price, image: imageUrl });
+
+      alert("Anúncio criado");
+    } catch (err) {
+      console.error(err);
+      alert("Erro ao criar anúncio");
     }
-
-    await api.post("/ads", { title, price, image: imageUrl });
-
-    alert("Anúncio criado");
   };
 
   return (
