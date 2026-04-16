@@ -23,25 +23,14 @@ export default function CreateAd() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Criar Anúncio</h1>
+    <div style={{ padding: 20, maxWidth: 400, margin: "auto" }}>
+      <h2>Criar anúncio</h2>
 
-      <input
-        placeholder="Título"
-        onChange={e => setTitle(e.target.value)}
-      /><br />
+      <input placeholder="Título" onChange={e => setTitle(e.target.value)} />
+      <input placeholder="Preço" onChange={e => setPrice(e.target.value)} />
+      <input type="file" onChange={e => setImage(e.target.files[0])} />
 
-      <input
-        placeholder="Preço"
-        onChange={e => setPrice(e.target.value)}
-      /><br />
-
-      <input
-        type="file"
-        onChange={e => setImage(e.target.files[0])}
-      /><br />
-
-      <button onClick={handleSubmit}>
+      <button style={{ width: "100%" }} onClick={handleSubmit}>
         Publicar
       </button>
     </div>
