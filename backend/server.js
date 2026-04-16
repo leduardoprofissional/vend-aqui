@@ -9,6 +9,21 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+const Message = mongoose.model("Message", {
+  from: String,
+  to: String,
+  text: String
+});
+
+app.post("/chat", async (req, res) => {
+  const msg = await Message.create(req.body);
+  res.json(msg);
+});
+
+app.get("/chat/:user", async (req, res) => {
+  const msgs = await Message.find({ to: req.params.user });
+  res.json(msgs);
+});
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
