@@ -4,7 +4,7 @@ export default function App() {
   const [ads, setAds] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/ads')
+    fetch('https://vend-aqui.onrender.com')
       .then(res => res.json())
       .then(setAds);
   }, []);
