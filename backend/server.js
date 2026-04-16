@@ -8,6 +8,20 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+function auth(req, res, next) {
+  const token = req.headers.authorization;
+
+  if (!token) return res.sendStatus(401);
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.id;
+    next();
+  } catch {
+    res.sendStatus(401);
+  }
+}
+
 const app = express();
 const Message = mongoose.model("Message", {
   from: String,
@@ -76,11 +90,14 @@ app.get("/ads", async (req, res) => {
   res.json(ads);
 });
 
-app.post("/ads", async (req, res) => {
-  const ad = await Ad.create(req.body);
+app.post("/ads", auth, async (req, res) => {
+  const ad = await Ad.create({
+    ...req.body,
+    userId: req.userId
+  });
+
   res.json(ad);
 });
-
 // UPLOAD
 const upload = multer({ dest: "uploads/" });
 
