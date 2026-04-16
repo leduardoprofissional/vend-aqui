@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
+import AdDetail from "./pages/AdDetail";
 import CreateAd from "./pages/CreateAd";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreateAd />} />
+        <Route path="/ad/:id" element={<AdDetail />} />
       </Routes>
     </BrowserRouter>
   );
