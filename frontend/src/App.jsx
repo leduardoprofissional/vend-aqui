@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import AdDetail from "./pages/AdDetail";
 import CreateAd from "./pages/CreateAd";
 import Chat from "./pages/Chat";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/create" element={<CreateAd />} />
         <Route path="/ad/:id" element={<AdDetail />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
