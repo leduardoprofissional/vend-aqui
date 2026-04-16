@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [ads, setAds] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     api.get("/ads").then(res => setAds(res.data));
