@@ -52,6 +52,10 @@ app.post("/login", async (req, res) => {
 });
 
 // ADS
+app.get("/", (req, res) => {
+  res.send("API Vend'Aqui rodando 🚀");
+});
+
 app.get("/ads", async (req, res) => {
   const ads = await Ad.find();
   res.json(ads);
