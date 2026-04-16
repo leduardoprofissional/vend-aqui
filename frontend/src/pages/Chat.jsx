@@ -5,7 +5,7 @@ export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
-  const user = "user1"; // depois vamos trocar por login real
+  const user = "user1";
 
   useEffect(() => {
     api.get(`/chat/${user}`).then(res => setMessages(res.data));
