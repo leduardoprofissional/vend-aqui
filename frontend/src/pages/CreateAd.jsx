@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../services/api";
+import { getUser } from "../services/auth";
 
 export default function CreateAd() {
   const [title, setTitle] = useState("");
@@ -8,6 +9,11 @@ export default function CreateAd() {
 
   const handleSubmit = async () => {
     let imageUrl = "";
+    
+    if (!getUser()) {
+  alert("Faça login primeiro");
+  return;
+}
 
     if (image) {
       const formData = new FormData();
