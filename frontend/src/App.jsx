@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import AdDetail from "./pages/AdDetail";
 import CreateAd from "./pages/CreateAd";
+import Chat from "./pages/Chat";
 
 function App() {
   return (
@@ -12,14 +13,19 @@ function App() {
         display: "flex",
         justifyContent: "space-between"
       }}>
-        <Link to="/" style={{ color: "#fff" }}>Home</Link>
-        <Link to="/create" style={{ color: "#fff" }}>Anunciar</Link>
+        <div>
+          <Link to="/" style={{ color: "#fff", marginRight: 15 }}>Home</Link>
+          <Link to="/create" style={{ color: "#fff" }}>Anunciar</Link>
+        </div>
+
+        <Link to="/chat" style={{ color: "#fff" }}>Chat</Link>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<CreateAd />} />
         <Route path="/ad/:id" element={<AdDetail />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );
