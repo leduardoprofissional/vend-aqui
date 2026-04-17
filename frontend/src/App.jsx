@@ -13,14 +13,28 @@ function App() {
         background: "#ff6600",
         padding: 15,
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignItems: "center"
       }}>
+        
+        {/* ESQUERDA */}
         <div>
           <Link to="/" style={{ color: "#fff", marginRight: 15 }}>Home</Link>
-          <Link to="/create" style={{ color: "#fff" }}>Anunciar</Link>
+          <Link to="/create" style={{ color: "#fff", marginRight: 15 }}>Anunciar</Link>
+          <Link to="/chat" style={{ color: "#fff" }}>Chat</Link>
         </div>
 
-        <Link to="/chat" style={{ color: "#fff" }}>Chat</Link>
+        {/* DIREITA (NOVO) */}
+        <div>
+          <Link to="/login" style={{ color: "#fff", marginRight: 15 }}>
+            Login
+          </Link>
+
+          <Link to="/register" style={{ color: "#fff" }}>
+            Cadastro
+          </Link>
+        </div>
+
       </nav>
 
       <Routes>
